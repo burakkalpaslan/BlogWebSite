@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IQueryable<Makale>
+
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core%22%3Ebuilding Web apps with ASP.NET Core</a></p>
+    </div>*@
+
+
+<div class="row mh-100">
+    <div class="position-absolute img-fluid" style="padding-top:150px; padding-left:50px;">
+        <h1>Hello World</h1>
+        <p><b>Discover stories, thinking, and expertise from writers on any topic.</b></p>
+    </div>
+    <img class="w-100 img-fluid" style="height:400px" src="~/img/sarısarııı.jpg">
+</div>
+
+<div class="container mt-5">
+    @foreach (var makale in Model)
+    {
+    <dl class="row">
+        <dt class="col-sm-2">
+            Makale Yazarı Adı:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => makale.Kullanici.FirstName)  @Html.DisplayFor(model => makale.Kullanici.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            Başlık
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => makale.Title)
+        </dd>
+        <dt class="col-sm-2">
+            İçerik
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => makale.Content)
+        </dd>
+        @*<dd class="col-sm-10">
+            <a asp-controller="Makale" asp-action="MakaleDuzenle" asp-route-id="@makale.MakaleID">Düzenle</a> |
+            <a asp-controller="Makale" asp-action="MakaleSil" asp-route-id="@makale.MakaleID">Sil</a>
+        </dd>*@
+    </dl>
+        <hr />
+        <br />
+    }
+</div>
+
+
+

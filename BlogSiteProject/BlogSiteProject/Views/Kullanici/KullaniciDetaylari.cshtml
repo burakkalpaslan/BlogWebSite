@@ -1,0 +1,68 @@
+﻿@model BlogSiteProject.Models.ViewModels.KullaniciMakaleVM
+
+@{
+    ViewData["Title"] = "UserDetails";
+}
+<div class="container mt-5">
+    <h1>Kullanıcı Detayları</h1>
+
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                Kullanıcı Adı
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Kullanici.FirstName)
+            </dd>
+            <dt class="col-sm-2">
+                Kullanıcı Soyadı
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Kullanici.LastName)
+            </dd>
+            <dt class="col-sm-2">
+                Kullanıcı ID
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Kullanici.ID)
+            </dd>
+        </dl>
+
+        <br />
+        <h4>Makaleler</h4>
+        <br />
+
+        @foreach (var makale in Model.Makaleler)
+        {
+            <dl class="row">
+                <dt class="col-sm-2">
+                    Başlık
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => makale.Title)
+                </dd>
+                <dt class="col-sm-2">
+                    İçerik
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => makale.Content)
+                </dd>
+                <dt class="col-sm-2">
+                    İşlemler
+                </dt>
+                <dd class="col-sm-10">
+                    <a asp-controller="Makale" asp-action="MakaleDuzenle" asp-route-id="@makale.MakaleID">Düzenle</a> |
+                    <a asp-controller="Makale" asp-action="MakaleSil" asp-route-id="@makale.MakaleID">Sil</a>
+                </dd>
+            </dl>
+
+            <hr />
+            <br />
+        }
+    </div>
+    <a asp-action="Index">Listeye Dön</a>
+</div>
+
+
+

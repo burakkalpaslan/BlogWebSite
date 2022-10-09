@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BlogSiteProject.Models.Makale>
+
+@{
+    ViewData["Title"] = "Makaleler";
+}
+
+<div class="m-5">
+    <h1>Makaleler</h1>
+
+    <p>
+        <a asp-action="MakaleEkle" style="text-decoration:none;">Yeni Makale Ekle</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Başlık
+                </th>
+                <th>
+                    İçerik
+                </th>
+                @*<th>
+                    Yazar
+                </th>*@
+                <th>
+                    İşlemler
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Kullanici.FirstName) @Html.DisplayFor(modelItem => item.Kullanici.LastName)
+                </td>*@
+                <td>
+                    <a asp-action="MakaleDuzenle" asp-route-id="@item.MakaleID">Düzenle</a> |
+                    <a asp-action="MakaleDetaylari" asp-route-id="@item.MakaleID">Detaylar</a> |
+                    <a asp-action="MakaleSil" asp-route-id="@item.MakaleID">Sil</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

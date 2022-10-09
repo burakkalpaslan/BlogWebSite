@@ -1,0 +1,42 @@
+﻿@model BlogSiteProject.Models.Kullanici
+
+@{
+    ViewData["Title"] = "KullaniciEkle";
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<div class="m-5">
+    <h1>Kullanici Ekle</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="KullaniciEkle" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label">Kullanıcı Adı</label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label">Kullanıcı Soyadı</label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Oluştur" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Listeye Dön</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

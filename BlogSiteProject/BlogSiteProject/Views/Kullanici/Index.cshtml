@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BlogSiteProject.Models.Kullanici>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div class="m-5">
+    <h1>Kullanıcılar</h1>
+
+    <p>
+        <a class="btn btn-primary" asp-action="KullaniciEkle">Yeni Kullanıcı</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Kullanıcı Adı
+                </th>
+                <th>
+                    Kullanıcı Soyadı
+                </th>
+                <th>
+                    İşlemler
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        <a asp-action="KullaniciDuzenle" asp-route-id="@item.ID">Düzenle</a> |
+                        <a asp-action="KullaniciDetaylari" asp-route-id="@item.ID">Detaylar</a> |
+                        <a asp-action="KullaniciSil" asp-route-id="@item.ID">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
